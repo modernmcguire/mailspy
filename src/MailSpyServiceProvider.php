@@ -2,9 +2,9 @@
 
 namespace ModernMcGuire\MailSpy;
 
+use ModernMcGuire\MailSpy\Commands\MailSpyCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ModernMcGuire\MailSpy\Commands\MailSpyCommand;
 
 class MailSpyServiceProvider extends PackageServiceProvider
 {
