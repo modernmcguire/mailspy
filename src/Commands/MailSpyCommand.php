@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace ModernMcGuire\MailSpy\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MailSpyCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'mailspy';
 
     public $description = 'My command';
 
