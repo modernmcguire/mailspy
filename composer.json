@@ -1,6 +1,6 @@
 {
     "name": "modernmcguire/mailspy",
-    "description": "Local email log",
+    "description": "MailSpy is a Laravel package that allows you to capture and inspect emails sent by your application. It was created to help with testing and debugging email sending in Laravel applications. It was created to get around low retention log limits in services like MailGun and MailerSend.",
     "keywords": [
         "Modern McGuire",
         "laravel",
