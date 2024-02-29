@@ -2,9 +2,8 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
-use ModernMcGuire\MailSpy\Models\Email;
 use Illuminate\Mail\Events\MessageSending;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use ModernMcGuire\MailSpy\Models\Email;
 
 class LogSendingEmailListener
 {
@@ -75,7 +74,6 @@ class LogSendingEmailListener
                 $text = quoted_printable_decode($textContent);
             }
         }
-
 
         $email->content()->create([
             'html' => $html,
