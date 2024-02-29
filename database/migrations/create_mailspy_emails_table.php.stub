@@ -8,12 +8,16 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('mailspy_table', function (Blueprint $table) {
+        Schema::create('mailspy_emails', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->string('subject')->nullable();
             $table->timestamps();
+            $table->dateTime('sent_at')->nullable();
         });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('mailspy_emails');
     }
 };
