@@ -3,7 +3,6 @@
 namespace ModernMcGuire\MailSpy\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use ModernMcGuire\MailSpy\Models\Email;
 
 class EmailContent extends Model
 {

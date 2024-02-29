@@ -2,9 +2,9 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Events\MessageSent;
 use ModernMcGuire\MailSpy\Models\Email;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class LogSentEmailListener implements ShouldQueue
 {
@@ -17,7 +17,7 @@ class LogSentEmailListener implements ShouldQueue
             // Get the email id from the email headers
             $emailId = $message->getHeaders()->get('X-MailSpy-Email-Id');
 
-            if(!$emailId) {
+            if (! $emailId) {
                 return;
             }
 
