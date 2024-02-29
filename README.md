@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/modernmcguire/mailspy/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/modernmcguire/mailspy/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/modernmcguire/mailspy.svg?style=flat-square)](https://packagist.org/packages/modernmcguire/mailspy)
 
-MailSpy is a Laravel package that allows you to capture and inspect emails sent by your application. It was created to help with testing and debugging email sending in Laravel applications. It was created to get around low retention log limits in services like MailGun and MailerSend.
+MailSpy is a Laravel package that allows you to capture and inspect emails sent by your application. It was created to help with testing and debugging email sending in Laravel applications in addition to getting around low retention log limits in services like MailGun and MailerSend.
 
 ## Installation
 
