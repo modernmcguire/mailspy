@@ -32,6 +32,27 @@ php artisan vendor:publish --tag="mailspy-config"
 
 Nothing to do here! Simply install the package and we will start tracking outgoing email saving the results to your database.
 
+## Events
+
+MailSpy listens for the MessageSending and MessageSent events.
+You may register your own event listeners by calling the `Mailspy::sending()` and `Mailspy::sent()` methods in a service provider.
+
+```php
+use ModernMcGuire\MailSpy\Facades\MailSpy;
+use \Illuminate\Mail\Events\MessageSending;
+use \Illuminate\Mail\Events\MessageSent;
+
+MailSpy::sending(function (MessageSending $event, Email $email) {
+    // Do something with the event
+});
+
+MailSpy::sent(function (MessageSent $event, Email $email) {
+    // Do something with the event
+});
+```
+
+
+
 ## Testing
 
 ```bash

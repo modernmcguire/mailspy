@@ -19,4 +19,14 @@ class Email extends Model
     {
         return $this->hasMany(EmailRecipient::class, 'email_id');
     }
+
+    public function tags()
+    {
+        return $this->hasMany(EmailTag::class, 'email_id');
+    }
+
+    public function sender()
+    {
+        return $this->hasOne(EmailSender::class, 'email_id');
+    }
 }
