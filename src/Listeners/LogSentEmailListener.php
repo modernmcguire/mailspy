@@ -2,7 +2,6 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
-use ModernMcGuire\MailSpy\MailSpy;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Events\MessageSent;
 use ModernMcGuire\MailSpy\Models\Email;

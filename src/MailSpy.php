@@ -5,6 +5,7 @@ namespace ModernMcGuire\MailSpy;
 class MailSpy
 {
     private array $sendingListeners = [];
+
     private array $sentListeners = [];
 
     public function sending(\Closure $listener)

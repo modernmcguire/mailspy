@@ -2,12 +2,11 @@
 
 namespace ModernMcGuire\MailSpy;
 
-use ModernMcGuire\MailSpy\Models\Email;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Mail\Events\MessageSent;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use ModernMcGuire\MailSpy\Listeners\LogSendingEmailListener;
 use ModernMcGuire\MailSpy\Listeners\LogSentEmailListener;
+use ModernMcGuire\MailSpy\Models\Email;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -78,7 +77,6 @@ class MailSpyServiceProvider extends PackageServiceProvider
         $this->registerEventListeners();
     }
 
-
     /**
      * Register the event listeners
      */
@@ -96,7 +94,6 @@ class MailSpyServiceProvider extends PackageServiceProvider
             LogSentEmailListener::class
         );
 
-
         foreach (app(MailSpy::class)->getSentListeners() as $listener) {
             $events->listen(
                 MessageSent::class,
@@ -109,8 +106,7 @@ class MailSpyServiceProvider extends PackageServiceProvider
             );
         }
 
-
-        foreach(app(MailSpy::class)->getSendingListeners() as $listener) {
+        foreach (app(MailSpy::class)->getSendingListeners() as $listener) {
             $events->listen(
                 MessageSending::class,
                 function ($event) use ($listener) {

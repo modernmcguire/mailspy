@@ -14,6 +14,4 @@ class EmailTag extends Model
     {
         return $this->belongsTo(Email::class, 'email_id');
     }
-
-
 }
