@@ -35,7 +35,7 @@ Nothing to do here! Simply install the package and we will start tracking outgoi
 ## Events
 
 MailSpy listens for the MessageSending and MessageSent events.
-You may register your own event listeners by calling the `Mailspy::sending()` and `Mailspy::sent()` methods a service provider.
+You may register your own event listeners by calling the `Mailspy::sending()` and `Mailspy::sent()` methods in a service provider.
 
 ```php
 use ModernMcGuire\MailSpy\Facades\MailSpy;
