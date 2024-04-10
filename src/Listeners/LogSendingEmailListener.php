@@ -2,6 +2,8 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
+use ModernMcGuire\MailSpy\MailSpy;
+use Symfony\Component\Mime\Address;
 use Illuminate\Mail\Events\MessageSending;
 use ModernMcGuire\MailSpy\Models\Email;
 
@@ -22,6 +24,7 @@ class LogSendingEmailListener
             $message->getHeaders()->addTextHeader('X-MailSpy-Email-Id', $email->id);
 
             dispatch(function () use ($email, $message) {
+                $this->saveSenders($email, $message);
                 $this->saveRecipients($email, $message);
                 $this->saveContent($email, $message);
             });
@@ -37,6 +40,21 @@ class LogSendingEmailListener
         });
 
         $email->recipients()->createMany($recipients->toArray());
+    }
+
+    private function saveSenders($email, \Symfony\Component\Mime\Email $message): void
+    {
+        /** @var Address $sender */
+        collect($message->getReplyTo())->each(function ($sender) use ($email) {
+            $email->tags()->create([
+                'tag' => 'sender',
+                'value' => $sender->getAddress(),
+            ]);
+
+            $email->sender()->create([
+                'email_address' => $sender->getAddress(),
+            ]);
+        });
     }
 
     private function saveContent($email, $message)

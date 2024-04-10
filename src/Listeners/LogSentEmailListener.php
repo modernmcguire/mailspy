@@ -2,6 +2,7 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
+use ModernMcGuire\MailSpy\MailSpy;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Events\MessageSent;
 use ModernMcGuire\MailSpy\Models\Email;
@@ -21,12 +22,19 @@ class LogSentEmailListener implements ShouldQueue
                 return;
             }
 
-            Email::where('id', $emailId->getValue())->update([
+            $email = Email::where('id', $emailId->getValue())->first();
+
+            $email->update([
                 'sent_at' => now(),
             ]);
+
+            $this->registerUserListeners($email);
         } catch (\Exception $e) {
             report($e);
         }
+    }
 
+    private function registerUserListeners(Email $email): void
+    {
     }
 }
