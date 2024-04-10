@@ -4,7 +4,6 @@ namespace ModernMcGuire\MailSpy\Concerns;
 
 trait MailspyTags
 {
-
     abstract public function tags(): array;
 
     protected function prepareMailableForDelivery()
@@ -13,5 +12,4 @@ trait MailspyTags
 
         parent::prepareMailableForDelivery();
     }
-
 }

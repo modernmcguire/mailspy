@@ -4,8 +4,8 @@ namespace ModernMcGuire\MailSpy\Listeners;
 
 use Illuminate\Mail\Events\MessageSending;
 use ModernMcGuire\MailSpy\Models\Email;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\Header\TagHeader;
+use Symfony\Component\Mime\Address;
 
 class LogSendingEmailListener
 {
@@ -106,7 +106,7 @@ class LogSendingEmailListener
         $header = $message->getHeaders()->get('X-Tag');
 
         // if method tags exists
-        foreach(json_decode($header->getValue(), true) as $tag => $value) {
+        foreach (json_decode($header->getValue(), true) as $tag => $value) {
             if (is_array($value)) {
                 $value = json_encode($value);
             }
