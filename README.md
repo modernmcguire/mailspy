@@ -52,6 +52,42 @@ MailSpy::sent(function (MessageSent $event, Email $email) {
 ```
 
 
+## Tags
+
+If you want to tag your emails, you can do so by adding the `MailspyTags` concern to any of your mailable classes.
+
+```php
+use ModernMcGuire\MailSpy\Facades\MailSpy;
+use ModernMcGuire\MailSpy\Concerns\MailspyTags;
+
+class MarketingPlan extends Mailable implements ShouldQueue
+{
+    use Queueable;
+    use SerializesModels;
+    use MailspyTags;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct(
+        public Client $client,
+    ) {
+        //
+    }
+
+
+    public function tags(): array
+    {
+        return [
+            'client' => $this->client->id,
+        ];
+    }
+
+}
+
+```
 
 ## Testing
 
