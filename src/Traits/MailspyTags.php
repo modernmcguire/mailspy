@@ -1,6 +1,6 @@
 <?php
 
-namespace ModernMcGuire\MailSpy\Concerns;
+namespace ModernMcGuire\MailSpy\Traits;
 
 trait MailspyTags
 {
