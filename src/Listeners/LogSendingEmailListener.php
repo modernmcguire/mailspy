@@ -4,6 +4,7 @@ namespace ModernMcGuire\MailSpy\Listeners;
 
 use Illuminate\Mail\Events\MessageSending;
 use ModernMcGuire\MailSpy\Models\Email;
+use Symfony\Component\Mailer\Header\TagHeader;
 use Symfony\Component\Mime\Address;
 
 class LogSendingEmailListener
@@ -26,6 +27,7 @@ class LogSendingEmailListener
                 $this->saveSenders($email, $message);
                 $this->saveRecipients($email, $message);
                 $this->saveContent($email, $message);
+                $this->saveTags($email, $message);
             });
         } catch (\Exception $e) {
             report($e);
@@ -96,5 +98,23 @@ class LogSendingEmailListener
             'html' => $html,
             'text' => $text,
         ]);
+    }
+
+    private function saveTags(Email $email, \Symfony\Component\Mime\Email $message): void
+    {
+        /** @var TagHeader $header */
+        $header = $message->getHeaders()->get('X-Tag');
+
+        // if method tags exists
+        foreach (json_decode($header->getValue(), true) as $tag => $value) {
+            if (is_array($value)) {
+                $value = json_encode($value);
+            }
+
+            $email->tags()->create([
+                'tag' => $tag,
+                'value' => $value,
+            ]);
+        }
     }
 }
