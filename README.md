@@ -58,7 +58,7 @@ If you want to tag your emails, you can do so by adding the `MailspyTags` concer
 
 ```php
 use ModernMcGuire\MailSpy\Facades\MailSpy;
-use ModernMcGuire\MailSpy\Concerns\MailspyTags;
+use ModernMcGuire\MailSpy\Traits\MailspyTags;
 
 class MarketingPlan extends Mailable implements ShouldQueue
 {
