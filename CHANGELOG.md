@@ -2,6 +2,14 @@
 
 All notable changes to `mailspy` will be documented in this file.
 
+## 0.2.1 - 2024-04-11
+
+### What's Changed
+
+* Feature/tags by @braceyourself in https://github.com/modernmcguire/mailspy/pull/3
+
+**Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.2.0...0.2.1
+
 ## 0.2.0 - 2024-04-10
 
 ### What's Changed
