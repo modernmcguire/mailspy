@@ -2,10 +2,10 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
-use Symfony\Component\Mime\Address;
-use ModernMcGuire\MailSpy\Models\Email;
 use Illuminate\Mail\Events\MessageSending;
+use ModernMcGuire\MailSpy\Models\Email;
 use Symfony\Component\Mailer\Header\TagHeader;
+use Symfony\Component\Mime\Address;
 
 class LogSendingEmailListener
 {
