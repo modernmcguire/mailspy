@@ -2,9 +2,9 @@
 
 namespace ModernMcGuire\MailSpy\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use ModernMcGuire\MailSpy\MailSpyServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use ModernMcGuire\MailSpy\MailSpyServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ModernMcGuire\\MailSpy\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'ModernMcGuire\\MailSpy\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 

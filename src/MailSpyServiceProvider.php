@@ -2,13 +2,13 @@
 
 namespace ModernMcGuire\MailSpy;
 
-use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Mail\Events\MessageSent;
-use ModernMcGuire\MailSpy\Listeners\LogSendingEmailListener;
-use ModernMcGuire\MailSpy\Listeners\LogSentEmailListener;
 use ModernMcGuire\MailSpy\Models\Email;
 use Spatie\LaravelPackageTools\Package;
+use Illuminate\Mail\Events\MessageSending;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use ModernMcGuire\MailSpy\Listeners\LogSentEmailListener;
+use ModernMcGuire\MailSpy\Listeners\LogSendingEmailListener;
 
 class MailSpyServiceProvider extends PackageServiceProvider
 {
@@ -64,8 +64,8 @@ class MailSpyServiceProvider extends PackageServiceProvider
             $silenced = $this->app['config']->get('horizon.silenced', []);
 
             $silenced = array_merge($silenced, [
-                \ModernMcGuire\MailSpy\Listeners\LogSendingEmailListener::class,
-                \ModernMcGuire\MailSpy\Listeners\LogSentEmailListener::class,
+                LogSendingEmailListener::class,
+                LogSentEmailListener::class,
             ]);
 
             $this->app['config']->set('horizon.silenced', $silenced);
@@ -78,7 +78,7 @@ class MailSpyServiceProvider extends PackageServiceProvider
     }
 
     /**
-     * Register the event listeners
+     * Register the event listeners.
      */
     private function registerEventListeners()
     {
@@ -99,6 +99,11 @@ class MailSpyServiceProvider extends PackageServiceProvider
                 MessageSent::class,
                 function ($event) use ($listener) {
                     $emailId = $event->message->getHeaders()->get('X-MailSpy-Email-Id');
+
+                    if (! $emailId) {
+                        return;
+                    }
+
                     $email = Email::where('id', $emailId->getValue())->first();
 
                     return $listener($event, $email);
@@ -112,12 +117,15 @@ class MailSpyServiceProvider extends PackageServiceProvider
                 function ($event) use ($listener) {
                     $emailId = $event->message->getHeaders()->get('X-MailSpy-Email-Id');
 
+                    if (! $emailId) {
+                        return;
+                    }
+
                     $email = Email::where('id', $emailId->getValue())->first();
 
                     return $listener($event, $email);
                 }
             );
         }
-
     }
 }
