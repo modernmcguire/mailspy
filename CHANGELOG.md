@@ -2,6 +2,18 @@
 
 All notable changes to `mailspy` will be documented in this file.
 
+## 0.2.2 - 2024-04-16
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/modernmcguire/mailspy/pull/4
+
+### New Contributors
+
+* @dependabot made their first contribution in https://github.com/modernmcguire/mailspy/pull/4
+
+**Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.2.1...0.2.2
+
 ## 0.2.1 - 2024-04-11
 
 ### What's Changed
