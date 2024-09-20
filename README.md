@@ -7,6 +7,12 @@
 
 MailSpy is a Laravel package that allows you to capture and inspect emails sent by your application. It was created to help with testing and debugging email sending in Laravel applications in addition to getting around low retention log limits in services like MailGun and MailerSend.
 
+---
+
+Do you want to fully capture your emails as an alternative to the log driver? Try out [MailThief](https://github.com/modernmcguire/mailthief).
+
+---
+
 ## Installation
 
 You can install the package via composer:
