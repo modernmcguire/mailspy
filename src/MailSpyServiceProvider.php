@@ -2,13 +2,13 @@
 
 namespace ModernMcGuire\MailSpy;
 
+use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Mail\Events\MessageSent;
+use ModernMcGuire\MailSpy\Listeners\LogSendingEmailListener;
+use ModernMcGuire\MailSpy\Listeners\LogSentEmailListener;
 use ModernMcGuire\MailSpy\Models\Email;
 use Spatie\LaravelPackageTools\Package;
-use Illuminate\Mail\Events\MessageSending;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ModernMcGuire\MailSpy\Listeners\LogSentEmailListener;
-use ModernMcGuire\MailSpy\Listeners\LogSendingEmailListener;
 
 class MailSpyServiceProvider extends PackageServiceProvider
 {

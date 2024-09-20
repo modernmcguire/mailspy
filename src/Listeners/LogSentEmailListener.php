@@ -2,9 +2,9 @@
 
 namespace ModernMcGuire\MailSpy\Listeners;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Events\MessageSent;
 use ModernMcGuire\MailSpy\Models\Email;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class LogSentEmailListener implements ShouldQueue
 {
