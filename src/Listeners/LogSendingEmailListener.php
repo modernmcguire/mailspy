@@ -5,13 +5,13 @@ namespace ModernMcGuire\MailSpy\Listeners;
 use Illuminate\Mail\Events\MessageSending;
 use ModernMcGuire\MailSpy\Models\Email;
 use Symfony\Component\Mailer\Header\TagHeader;
-use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email as SymfonyEmail;
 
 class LogSendingEmailListener
 {
     public function handle(MessageSending $event)
     {
-        // Access the message object
+        /** @var SymfonyEmail $message */
         $message = $event->message;
 
         try {
@@ -34,16 +34,31 @@ class LogSendingEmailListener
         }
     }
 
-    private function saveRecipients($email, $message)
+    private function saveRecipients(Email $email, SymfonyEmail $message)
     {
-        $recipients = collect($message->getTo())->map(function ($recipient) {
-            return ['email_address' => $recipient->getAddress()];
-        });
+        // TO:
+        $email->recipients()->createMany(
+            array_map(function ($recipient) {
+                return ['email_address' => $recipient->getAddress()];
+            }, $message->getTo())
+        );
 
-        $email->recipients()->createMany($recipients->toArray());
+        // CC:
+        $email->recipients()->createMany(
+            array_map(function ($recipient) {
+                return ['email_address' => $recipient->getAddress()];
+            }, $message->getCc())
+        );
+
+        // BCC:
+        $email->recipients()->createMany(
+            array_map(function ($recipient) {
+                return ['email_address' => $recipient->getAddress()];
+            }, $message->getBcc())
+        );
     }
 
-    private function saveSenders($email, \Symfony\Component\Mime\Email $message): void
+    private function saveSenders(Email $email, SymfonyEmail $message): void
     {
         /* @var Address $sender */
         collect($message->getReplyTo())->each(function ($sender) use ($email) {
@@ -58,7 +73,7 @@ class LogSendingEmailListener
         });
     }
 
-    private function saveContent($email, $message)
+    private function saveContent(Email $email, SymfonyEmail $message)
     {
         $html = null;
         $text = null;
@@ -100,7 +115,7 @@ class LogSendingEmailListener
         ]);
     }
 
-    private function saveTags(Email $email, \Symfony\Component\Mime\Email $message): void
+    private function saveTags(Email $email, SymfonyEmail $message): void
     {
         /** @var TagHeader $header */
         $header = $message->getHeaders()->get('X-Tag');

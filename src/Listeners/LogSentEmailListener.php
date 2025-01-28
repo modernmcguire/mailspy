@@ -10,7 +10,7 @@ class LogSentEmailListener implements ShouldQueue
 {
     public function handle(MessageSent $event)
     {
-        // Access the message object
+        /** @var  \Symfony\Component\Mime\Email $message */
         $message = $event->message;
 
         try {
