@@ -10,7 +10,7 @@ class LogSentEmailListener implements ShouldQueue
 {
     public function handle(MessageSent $event)
     {
-        /** @var  \Symfony\Component\Mime\Email $message */
+        /** @var \Symfony\Component\Mime\Email $message */
         $message = $event->message;
 
         try {
@@ -33,7 +33,5 @@ class LogSentEmailListener implements ShouldQueue
         }
     }
 
-    private function registerUserListeners(Email $email): void
-    {
-    }
+    private function registerUserListeners(Email $email): void {}
 }

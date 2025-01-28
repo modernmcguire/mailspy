@@ -53,7 +53,7 @@ class MailSpyServiceProvider extends PackageServiceProvider
     public function registeringPackage()
     {
         $this->app->singleton(MailSpy::class, function () {
-            return new MailSpy();
+            return new MailSpy;
         });
     }
 
