@@ -2,6 +2,12 @@
 
 All notable changes to `mailspy` will be documented in this file.
 
+## 0.3.0 - 2025-01-28
+
+This release now logs cc and bcc addresses as well.
+
+**Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.2.2...0.3.0
+
 ## 0.2.2 - 2024-04-16
 
 ### What's Changed
