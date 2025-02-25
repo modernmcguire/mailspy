@@ -2,6 +2,12 @@
 
 All notable changes to `mailspy` will be documented in this file.
 
+## 0.5.0 - 2025-02-25
+
+Add ability to compress email contents
+
+**Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.4.1...0.5.0
+
 ## 0.4.1 - 2025-02-25
 
 **Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.4.0...0.4.1
