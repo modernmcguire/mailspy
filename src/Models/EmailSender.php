@@ -10,6 +10,11 @@ class EmailSender extends Model
 
     protected $guarded = [];
 
+    public function getConnectionName()
+    {
+        return config('mailspy.connection');
+    }
+
     public function email()
     {
         return $this->belongsTo(Email::class, 'email_id');

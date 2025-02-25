@@ -10,6 +10,11 @@ class Email extends Model
 
     protected $guarded = [];
 
+    public function getConnectionName()
+    {
+        return config('mailspy.connection');
+    }
+
     public function content()
     {
         return $this->hasOne(EmailContent::class, 'email_id');
