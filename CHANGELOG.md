@@ -2,6 +2,16 @@
 
 All notable changes to `mailspy` will be documented in this file.
 
+## 0.4.0 - 2025-02-25
+
+### What's Changed
+
+* Added ability to set database connection for email models
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.2.0 by @dependabot in https://github.com/modernmcguire/mailspy/pull/6
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/modernmcguire/mailspy/pull/8
+
+**Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.3.0...0.4.0
+
 ## 0.3.0 - 2025-01-28
 
 This release now logs cc and bcc addresses as well.
