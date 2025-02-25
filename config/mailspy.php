@@ -10,5 +10,10 @@ return [
     /**
      * The Database connection to use for the MailSpy models. Default: null
      */
-    'connection' => null,
+    'connection' => env('MAILSPY_CONNECTION', null),
+
+    /**
+     * Whether or not we should compress the html contents in the database. Default: false
+     */
+    'compress' => env('MAILSPY_COMPRESSION_ENABLED', false),
 ];
