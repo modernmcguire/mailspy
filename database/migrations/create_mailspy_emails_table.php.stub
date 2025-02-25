@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('mailspy_emails', function (Blueprint $table) {
+        Schema::connection(config('mailspy.connection'))->create('mailspy_emails', function (Blueprint $table) {
             $table->id();
             $table->string('subject')->nullable();
             $table->timestamps();
@@ -18,6 +18,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mailspy_emails');
+        Schema::connection(config('mailspy.connection'))->dropIfExists('mailspy_emails');
     }
 };

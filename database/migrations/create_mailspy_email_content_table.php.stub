@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('mailspy_email_content', function (Blueprint $table) {
+        Schema::connection(config('mailspy.connection'))->create('mailspy_email_content', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('email_id')->unsigned();
             $table->foreign('email_id')->references('id')->on('mailspy_emails')->onUpdate('cascade')->onDelete('cascade');
@@ -20,6 +20,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mailspy_email_content');
+        Schema::connection(config('mailspy.connection'))->dropIfExists('mailspy_email_content');
     }
 };
