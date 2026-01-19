@@ -2,6 +2,16 @@
 
 All notable changes to `mailspy` will be documented in this file.
 
+## 0.6.0 - 2026-01-19
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/modernmcguire/mailspy/pull/9
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.6 by @dependabot[bot] in https://github.com/modernmcguire/mailspy/pull/11
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/modernmcguire/mailspy/pull/15
+
+**Full Changelog**: https://github.com/modernmcguire/mailspy/compare/0.5.0...0.6.0
+
 ## 0.5.0 - 2025-02-25
 
 Add ability to compress email contents
